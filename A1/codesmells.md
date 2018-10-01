@@ -49,6 +49,7 @@ To make a method more programmer-friendly, I will retrieve each of the tasks alo
 When rewriting the original start method, instead of lining up all the code, I can simply call the method for each of the tasks
 (or steps).
 
+
 ## Code Smell: Speculative Generality
 
 ### Code Smell Category: Dispensables
@@ -73,6 +74,7 @@ Delete the class TranslationTable, and make the code (adapting to the one and on
 a method in class Order. Delete the parameter translationTable in the generator of class Order, and directly call the method
 TranslationTable to do all the translating job.
 
+
 ## Code Smell: Dead Code
 
 ### Code Smell Category: Dispensables
@@ -89,6 +91,7 @@ The method getIDs is never used.
 
 Delete it.
 
+
 ## Code Smell: Switch Statements
 
 ### Code Smell Category: Object-Orientation Abusers
@@ -103,7 +106,9 @@ The code fragment uses a sequence of if statements to do all the work, making th
 
 ### Solution:
 
-(To be considered...)
+Make statements within each if block a method, and put the if indicator ("Picker", "Sequencer", etc) part of the method name
+("toDoPicker", "toDoSequencer", etc). While eventScanner.hasNext(), call the method accordingly to nextEvent.startsWith().
+
 
 ## Code Smell: Feature Envy
 
