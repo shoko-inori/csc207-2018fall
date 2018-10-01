@@ -27,3 +27,24 @@ how would you refactor the code?]
 ==== End template ====
 
 # List of code smells
+
+## Code Smell: Long Method
+
+### Code Smell Category: Bloaters
+
+### List of classes and line numbers involved:
+
+* simulation.WarehouseSimulation.start, Lines 41 - 96
+
+### Description:
+
+This class WarehouseSimulation.start inplemented the entire program functionality within one sole method.
+The method, considering the tasks it is aimed to make, is huge.
+It makes me (the newly hired programmer) a great pain in the mind.
+
+### Solution:
+
+This method contains the entire functionality of the program, which has a number of different tasks in the flow.
+To make a method more programmer-friendly, I will retrieve each of the tasks along the workflow, and make it a method it self.
+When rewriting the original start method, instead of lining up all the code, I can simply call the method for each of the tasks
+(or steps).
