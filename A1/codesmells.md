@@ -57,10 +57,12 @@ When rewriting the original start method, instead of lining up all the code, I c
 
 * TranslationTable.TranslationTable, Line 24
 * Order.Order, Line 26
+* WarehouseSimulation.start, Line 42
 
 ### Description:
 
 Both generators of class Order and class TranslationTable made space for adapting to different translation tables.
+Method start of class WarehouseSimulation also took translationTable as a parameter.
 However, in this program (or in this warehouse) only fascias of one minivan model is dealt with,
 indicating that only one translation table is in use.
 This lead to extra code for a future situation that does not happen now.
@@ -102,3 +104,20 @@ The code fragment uses a sequence of if statements to do all the work, making th
 ### Solution:
 
 (To be considered...)
+
+## Code Smell: Feature Envy
+
+### Code Smell Category: Couplers
+
+### List of classes and line numbers involved:
+
+* WarehouseSimulation.main, Lines 103 - 109
+
+### Description:
+
+The method main simply uses the one-and-only WarehouseManager and the one-and-only TranslationTable to call the start method.
+
+### Solution:
+
+Delete the method start, and make the code and functions of start directly implemented with the main method,
+with WarehouseManager and TranslationTable directly embedded in the method instead of being parameters.
