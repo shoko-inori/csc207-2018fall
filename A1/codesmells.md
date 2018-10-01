@@ -70,3 +70,19 @@ This lead to extra code for a future situation that does not happen now.
 Delete the class TranslationTable, and make the code (adapting to the one and only translation table file instead of a file f)
 a method in class Order. Delete the parameter translationTable in the generator of class Order, and directly call the method
 TranslationTable to do all the translating job.
+
+## COde Smell: Dead Code
+
+### Code Smell Category: Dispensables
+
+### List of classes and line numbers involved
+
+* WarehouseManager.sequencerSequenced, Line 166
+
+### Description:
+
+The parameter name is never used in the method.
+
+### Solution:
+
+Delete it.
