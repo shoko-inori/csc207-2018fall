@@ -77,11 +77,11 @@ TranslationTable to do all the translating job.
 
 ### List of classes and line numbers involved
 
-* WarehouseManager.sequencerSequenced, Line 166
+* PickerOrderList.getIDs, Lines 97 - 104
 
 ### Description:
 
-The parameter name is never used in the method.
+The method getIDs is never used.
 
 ### Solution:
 
