@@ -1,5 +1,7 @@
 package csc207.fall2018.slidingtiles;
 
+import android.support.annotation.NonNull;
+
 import java.util.Observable;
 
 import java.io.Serializable;
@@ -11,7 +13,7 @@ import java.util.List;
  * The sliding tiles board.
  * TODO: Make this implement Iterable<Tile>.
  */
-public class Board extends Observable implements Serializable {
+public class Board extends Observable implements Serializable, Iterable<Tile> {
 
     /**
      * The number of rows.
@@ -46,11 +48,18 @@ public class Board extends Observable implements Serializable {
 
     /**
      * Return the number of tiles on the board.
+     *
      * @return the number of tiles on the board
      */
     int numTiles() {
-        // TODO: fix me
-        return -1;
+        /* TODO: Fix this. */
+        int count = 0;
+        for (Tile[] lst : tiles) {
+            for (Tile tl : lst) {
+                count++;
+            }
+        }
+        return count;
     }
 
     /**
@@ -84,5 +93,11 @@ public class Board extends Observable implements Serializable {
         return "Board{" +
                 "tiles=" + Arrays.toString(tiles) +
                 '}';
+    }
+
+    @NonNull
+    @Override
+    public Iterator<Tile> iterator() {
+        return null;
     }
 }
