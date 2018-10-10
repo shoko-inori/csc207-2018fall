@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.lang.Object;
 
 /**
  * The sliding tiles board.
@@ -83,7 +84,9 @@ public class Board extends Observable implements Serializable, Iterable<Tile> {
      */
     void swapTiles(int row1, int col1, int row2, int col2) {
         // TODO: swap
-
+        Tile middleMan = tiles[row1][col1];
+        tiles[row1][col1] = tiles[row2][col2];
+        tiles[row2][col2] = middleMan;
         setChanged();
         notifyObservers();
     }
@@ -98,6 +101,23 @@ public class Board extends Observable implements Serializable, Iterable<Tile> {
     @NonNull
     @Override
     public Iterator<Tile> iterator() {
-        return null;
+        return new BoardIterator();
+    }
+
+    public class BoardIterator implements Iterator<Tile> {
+
+        private int nextId = 0;
+
+        @Override
+        public boolean hasNext() {
+            return nextId != 15;
+        }
+
+        @Override
+        public Tile next() {
+            Tile nextTile = new Tile(nextId);
+            nextId++;
+            return nextTile;
+        }
     }
 }
