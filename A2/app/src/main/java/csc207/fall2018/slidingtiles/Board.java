@@ -105,18 +105,25 @@ public class Board extends Observable implements Serializable, Iterable<Tile> {
 
     public class BoardIterator implements Iterator<Tile> {
 
-        private int nextId = 0;
+        private int nextRow = 0;
+        private int nextCol = 0;
 
         @Override
         public boolean hasNext() {
-            return nextId != 15;
+            boolean hasN = true;
+            if (nextRow == 3 && nextCol == 2) { hasN = false; }
+            return hasN;
         }
 
         @Override
         public Tile next() {
-            Tile nextTile = new Tile(nextId);
-            nextId++;
-            return nextTile;
+            Tile result = tiles[nextRow][nextCol];
+            if (nextCol == 2) {
+                nextRow++;
+                nextCol = 0;
+            }
+            nextCol++;
+            return result;
         }
     }
 }
