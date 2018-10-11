@@ -99,6 +99,19 @@ class BoardManager implements Serializable {
 
         // TODO: figure out when to call board.swapTiles. Specifically, if any of the neighbouring
         // tiles is the blank tile, swap by calling Board's swap method.
+        Tile above = row == 0 ? null : board.getTile(row - 1, col);
+        Tile below = row == Board.NUM_ROWS - 1 ? null : board.getTile(row + 1, col);
+        Tile left = col == 0 ? null : board.getTile(row, col - 1);
+        Tile right = col == Board.NUM_COLS - 1 ? null : board.getTile(row, col + 1);
+        if (below != null && below.getId() == blankId) {
+            board.swapTiles(row, col, row + 1, col);
+        } else if (above != null && above.getId() == blankId) {
+            board.swapTiles(row, col, row - 1, col);
+        } else if (left != null && left.getId() == blankId) {
+            board.swapTiles(row, col, row, col - 1);
+        } else if (left != null && left.getId() == blankId) {
+            board.swapTiles(row, col, row, col + 1);
+        }
     }
 
 }
