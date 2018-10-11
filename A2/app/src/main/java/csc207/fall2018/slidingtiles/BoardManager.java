@@ -3,7 +3,9 @@ package csc207.fall2018.slidingtiles;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
+import java.lang.Comparable;
 
 /**
  * Manage a board, including swapping tiles, checking for a win, and managing taps.
@@ -52,6 +54,13 @@ class BoardManager implements Serializable {
     boolean puzzleSolved() {
         boolean solved = true;
         // TODO: fix me
+        Iterator<Tile> iter = board.iterator();
+        Tile current = iter.next();
+        while (iter.hasNext() && solved) {
+            Tile next = iter.next();
+            if (current.compareTo(next) >= 0) { solved = false; }
+            current = next;
+        }
         return solved;
     }
 
