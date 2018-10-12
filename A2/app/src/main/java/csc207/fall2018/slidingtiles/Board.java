@@ -111,14 +111,14 @@ public class Board extends Observable implements Serializable, Iterable<Tile> {
         @Override
         public boolean hasNext() {
             boolean hasN = true;
-            if (nextRow == 3 && nextCol == 3) { hasN = false; }
+            if (nextRow == 4) { hasN = false; }
             return hasN;
         }
 
         @Override
         public Tile next() {
             Tile result = tiles[nextRow][nextCol];
-            if (nextCol == 2) {
+            if (nextCol == 3) {
                 nextRow++;
                 nextCol = 0;
             }
