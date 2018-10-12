@@ -41,7 +41,7 @@ class BoardManager implements Serializable {
             tiles.add(new Tile(tileNum));
         }
 
-        Collections.shuffle(tiles);
+        // Collections.shuffle(tiles);
         this.board = new Board(tiles);
     }
 
@@ -57,7 +57,7 @@ class BoardManager implements Serializable {
         Tile current = iter.next();
         while (iter.hasNext() && solved) {
             Tile next = iter.next();
-            if (current.compareTo(next) > 0) { solved = false; }
+            if (current.compareTo(next) < 0) { solved = false; }
             current = next;
         }
         return solved;
