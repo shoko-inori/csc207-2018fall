@@ -18,6 +18,7 @@ class BoardManager implements Serializable {
 
     /**
      * Manage a board that has been pre-populated.
+     *
      * @param board the board
      */
     BoardManager(Board board) {
@@ -57,7 +58,9 @@ class BoardManager implements Serializable {
         Tile current = iter.next();
         while (iter.hasNext() && solved) {
             Tile next = iter.next();
-            if (current.compareTo(next) < 0) { solved = false; }
+            if (current.compareTo(next) < 0) {
+                solved = false;
+            }
             current = next;
         }
         return solved;
@@ -98,6 +101,10 @@ class BoardManager implements Serializable {
 
         // TODO: figure out when to call board.swapTiles. Specifically, if any of the neighbouring
         // tiles is the blank tile, swap by calling Board's swap method.
+        if (!this.isValidTap(position)) {
+            throw new Error("Not a valid tap!");
+        }
+        // Should never occur since this method is implemented only if this.isValidTap().
         Tile above = row == 0 ? null : board.getTile(row - 1, col);
         Tile below = row == Board.NUM_ROWS - 1 ? null : board.getTile(row + 1, col);
         Tile left = col == 0 ? null : board.getTile(row, col - 1);
