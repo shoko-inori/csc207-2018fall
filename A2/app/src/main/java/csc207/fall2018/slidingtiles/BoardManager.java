@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.lang.Comparable;
 
 /**
  * Manage a board, including swapping tiles, checking for a win, and managing taps.
@@ -58,7 +57,7 @@ class BoardManager implements Serializable {
         Tile current = iter.next();
         while (iter.hasNext() && solved) {
             Tile next = iter.next();
-            if (current.compareTo(next) >= 0) { solved = false; }
+            if (current.compareTo(next) > 0) { solved = false; }
             current = next;
         }
         return solved;
